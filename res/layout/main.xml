@@ -21,13 +21,79 @@
         android:text="@string/sense_service_station"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
 
+    <!-- Header for "Tags" section -->
+
+    <TextView
+        android:id="@+id/tags_header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sense_banner"
+        android:background="@android:color/darker_gray"
+        android:paddingLeft="2dp"
+        android:text="@string/label_tags"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tags_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tags_header"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:drawableRight="@drawable/lifetag_meeting"
+        android:maxLines="1"
+        android:onClick="onClick"
+        android:paddingBottom="6dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="6dp"
+        android:text="@string/label_tags"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+
+    </TextView>
+
+    <!-- Header for "Badges" section -->
+
+    <TextView
+        android:id="@+id/badges_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tags_button"
+        android:background="@android:color/darker_gray"
+        android:paddingLeft="2dp"
+        android:text="@string/label_badges"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/badges_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/badges_header"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:drawableRight="@drawable/badge_icon"
+        android:maxLines="1"
+        android:onClick="onClick"
+        android:paddingBottom="6dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="6dp"
+        android:text="@string/label_badges"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+
+    </TextView>
+
     <!-- Header for "Main switch" section -->
 
     <TextView
         android:id="@+id/header_main"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sense_banner"
+        android:layout_below="@+id/badges_button"
         android:background="@android:color/darker_gray"
         android:paddingLeft="2dp"
         android:text="@string/main_scr_header_main"

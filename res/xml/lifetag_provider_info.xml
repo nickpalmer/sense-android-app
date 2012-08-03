@@ -1,0 +1,6 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/tag_widget"
+    android:minHeight="72dp"
+    android:minWidth="72dp"
+    android:updatePeriodMillis="0"
+    android:previewImage="@drawable/lifetag_meeting"/>

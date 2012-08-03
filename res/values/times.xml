@@ -1,0 +1,97 @@
+<resources>
+
+    <string-array name="time_names">
+        <item>1  minute</item>
+        <item>2  minutes</item>
+        <item>3  minutes</item>
+        <item>4  minutes</item>
+        <item>5  minutes</item>
+        <item>6  minutes</item>
+        <item>7  minutes</item>
+        <item>8  minutes</item>
+        <item>9  minutes</item>
+        <item>10 minutes</item>
+        <item>15 minutes</item>
+        <item>20 minutes</item>
+        <item>25 minutes</item>
+        <item>30 minutes</item>
+        <item>35 minutes</item>
+        <item>40 minutes</item>
+        <item>45 minutes</item>
+        <item>50 minutes</item>
+        <item>55 minutes</item>
+        <item>1    hour</item>
+        <item>1.25 hours</item>
+        <item>1.5  hours</item>
+        <item>1.75 hours</item>
+        <item>2    hours</item>
+        <item>2.5  hours</item>
+        <item>3    hours</item>
+        <item>3.5  hours</item>
+        <item>4    hours</item>
+        <item>4.5  hours</item>
+        <item>5    hours</item>
+        <item>5.5  hours</item>
+        <item>6    hours</item>
+        <item>6.5  hours</item>
+        <item>7    hours</item>
+        <item>7.5  hours</item>
+        <item>8    hours</item>
+        <item>8.5  hours</item>
+        <item>9    hours</item>
+        <item>9.5  hours</item>
+        <item>10   hours</item>
+        <item>10.5 hours</item>
+        <item>11   hours</item>
+        <item>11.5 hours</item>
+        <item>12   hours</item>
+    </string-array>
+
+    <integer-array name="time_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>75</item>
+        <item>90</item>
+        <item>105</item>
+        <item>120</item>
+        <item>150</item>
+        <item>180</item>
+        <item>210</item>
+        <item>240</item>
+        <item>270</item>
+        <item>300</item>
+        <item>330</item>
+        <item>360</item>
+        <item>390</item>
+        <item>420</item>
+        <item>450</item>
+        <item>480</item>
+        <item>510</item>
+        <item>540</item>
+        <item>570</item>
+        <item>600</item>
+        <item>630</item>
+        <item>660</item>
+        <item>690</item>
+        <item>720</item>
+    </integer-array>
+
+</resources>

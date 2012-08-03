@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="tag_lifetag_cooking">Cooking</string>
+    <string name="tag_lifetag_eating">Eating</string>
+    <string name="tag_lifetag_sleeping">Sleeping</string>
+    <string name="tag_lifetag_traveling">Traveling</string>
+    <string name="tag_lifetag_working">Working</string>
+    <string name="tag_lifetag_shopping">Shopping</string>
+    <string name="tag_lifetag_watching">Watching TV/movie</string>
+    <string name="tag_lifetag_showering">Showering</string>
+    <string name="tag_lifetag_reading">Reading</string>
+    <string name="tag_lifetag_sporting">Excercising</string>
+    <string name="tag_lifetag_meeting">In a meeting</string>
+    <string name="tag_lifetag_socializing">Socializing</string>
+    <string name="tag_lifetag_sexing">Having sex</string>
+    <string name="tag_lifetag_other">Other</string>
+
+</resources>

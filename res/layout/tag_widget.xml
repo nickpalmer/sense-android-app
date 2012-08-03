@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal" >
+
+    <ImageButton
+        android:id="@+id/lifetag_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:maxHeight="48dp"
+        android:maxWidth="48dp"
+        android:src="@drawable/lifetag_unknown"
+        android:contentDescription="@string/content_descr_item_image" />
+
+    <TextView
+        android:id="@+id/mood_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/tag_lifetag_other" >
+    </TextView>
+
+</LinearLayout>

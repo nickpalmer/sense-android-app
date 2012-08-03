@@ -6,6 +6,7 @@
 
 package nl.sense_os.app;
 
+import nl.sense_os.app.badges.BadgesActivity;
 import nl.sense_os.app.dialogs.FaqDialog;
 import nl.sense_os.app.dialogs.LogoutConfirmDialog;
 import nl.sense_os.app.dialogs.LogoutConfirmDialog.LogoutActivity;
@@ -13,6 +14,7 @@ import nl.sense_os.app.dialogs.WelcomeDialog;
 import nl.sense_os.app.dialogs.WelcomeDialog.WelcomeActivity;
 import nl.sense_os.app.login.LoginActivity;
 import nl.sense_os.app.register.RegisterActivity;
+import nl.sense_os.app.tags.TagsActivity;
 import nl.sense_os.service.ISenseService;
 import nl.sense_os.service.ISenseServiceCallback;
 import nl.sense_os.service.SenseService;
@@ -190,7 +192,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 
 	/**
 	 * Handles clicks on the UI.
-	 * 
+	 *
 	 * @param v
 	 *            the View that was clicked.
 	 */
@@ -246,6 +248,10 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 			}
 		} else if (v.getId() == R.id.prefs_field) {
 			startActivity(new Intent(this, SenseSettings.class));
+		} else if (v.getId() == R.id.tags_button) {
+			startActivity(new Intent(this, TagsActivity.class));
+		} else  if (v.getId() == R.id.badges_button) {
+			startActivity(new Intent(this, BadgesActivity.class));
 		} else {
 			Log.e(TAG, "Unknown button pressed!");
 		}
@@ -593,7 +599,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 	 * Toggles the Sense service state. The service is started using <code>startService</code>, and
 	 * then the activity binds to the service. Alternatively, the service is stopped and the
 	 * Activity unbinds itself.
-	 * 
+	 *
 	 * Afterwards, the UI is updated to make the ToggleButtons show the new service state.
 	 */
 	private void toggleMain(boolean active) {
@@ -707,7 +713,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 
 	/**
 	 * Enables the checkboxes to show the status of the Sense Platform service.
-	 * 
+	 *
 	 * @param status
 	 *            The status of the service.
 	 * @see {@link Status#STATUSCODE_RUNNING}

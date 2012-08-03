@@ -1,0 +1,87 @@
+<resources>
+	<string name="badge_earned_yeah">Yeah Me!</string>
+	
+    <string name="badge_count_first">1st Tag</string>
+    <string name="badge_count_twenty">20 Tags</string>
+    <string name="badge_count_fifty">50 Tags</string>
+    <string name="badge_count_hundred">100 Tags</string>
+    <string name="badge_count_twohundred">200 Tags</string>
+    <string name="badge_count_threehundred">300 Tags</string>
+    <string name="badge_count_fourhundred">400 Tags</string>
+    <string name="badge_count_fivehundred">500 Tags</string>
+    <string name="badge_count_onethousand">1000 Tags</string>
+    <string name="badge_count_twothousand">2000 Tags</string>
+    <string name="badge_count_threethousand">3000 Tags</string>
+    <string name="badge_count_fourthousand">4000 Tags</string>
+    <string name="badge_count_fivethousand">5000 Tags</string>
+    <string name="badge_count_sixthousand">6000 Tags</string>
+    <string name="badge_count_seventhousand">7000 Tags</string>
+    <string name="badge_count_eightthousand">8000 Tags</string>
+    <string name="badge_count_ninethousand">9000 Tags</string>
+    <string name="badge_count_tenthousand">10000 Tags</string>
+    <!-- Cooking -->
+    <string name="badge_cooking_one">I Can Cook</string>
+    <string name="badge_cooking_line">Line Cook</string>
+    <string name="badge_cooking_sous">Sous Cook</string>
+    <string name="badge_cooking_executive">Executive Chef</string>
+    <string name="badge_cooking_top">Top Chef</string>
+    <string name="badge_cooking_master">Master Chef</string>
+    <!-- Sleeping -->
+    <string name="badge_sleeping_one">Sleeper</string>
+    <string name="badge_sleeping_week">Week Of Rest</string>
+    <string name="badge_sleeping_twoweeks">Healthy Sleeper</string>
+    <string name="badge_sleeping_vanwinkle">Rip Van Winkle</string>
+    <!-- Eating -->
+    <string name="badge_eating_threesquare">3 Square Meals</string>
+    <string name="badge_eating_regular">Regular Meals</string>
+    <string name="badge_eating_lots">Sir Eats A\'Lot</string>
+    <!-- Travel -->
+    <string name="badge_travel_onthemove">On The Move</string>
+    <string name="badge_travel_commuter">Commuter</string>
+    <string name="badge_travel_tripper">Tripper</string>
+    <!-- Shower -->
+    <string name="badge_shower_first">I Bathe</string>
+    <string name="badge_shower_good">Hygenic</string>
+    <string name="badge_shower_soclean">So Clean!</string>
+    <!-- Shopping -->
+    <string name="badge_shopping_first">I Shop</string>
+    <string name="badge_shopping_lots">Serious Shopper</string>
+    <string name="badge_shopping_shopaholic">Shopaholic!</string>
+    <!-- Read -->
+    <string name="badge_read_first">I Can Read</string>
+    <string name="badge_read_avidreader">Avid Reader</string>
+    <string name="badge_read_bookworm">Bookworm</string>
+    <!-- Watch -->
+    <string name="badge_watch_viewer">Viewer</string>
+    <string name="badge_watch_lounger">Lounger</string>
+    <string name="badge_watch_couchpotato">Couch Potato</string>
+    <!-- Work -->
+    <string name="badge_work_first">Employed</string>
+    <string name="badge_work_hard">Hard Worker</string>
+    <string name="badge_work_workaholic">Workaholic</string>
+    <!-- Sport -->
+    <string name="badge_sport_first">I workout!</string>
+    <string name="badge_sport_regular">Gym Regular</string>
+    <string name="badge_sport_fit">Fit</string>
+    <string name="badge_sport_athelete">Athelete</string>
+    <string name="badge_sport_top">Top Athelete</string>
+    <string name="badge_sport_olympic">Olympic Ready!</string>
+    <!-- Meeting -->
+    <string name="badge_meet_first">Met</string>
+    <string name="badge_meet_several">Several Meetings</string>
+    <string name="badge_meet_lots">Several Meetings</string>
+    <string name="badge_meet_loads">Loads of Meetings</string>
+    <string name="badge_meet_toomany">Too Many Meetings</string>
+    <string name="badge_meet_meetaholic">Meetaholic</string>
+    <!-- Social -->
+    <string name="badge_social_friends">I Have Friends</string>
+    <string name="badge_social_healthy">Healthy Social Life</string>
+    <string name="badge_social_butterfly">Social Butterfly</string>
+    <!-- Sex -->
+    <string name="badge_sex_gotlucky">Got Lucky</string>
+    <string name="badge_sex_hattrick">Hat Trick</string>
+    <string name="badge_sex_steady">Steady Supply</string>
+    <string name="badge_sex_libido">High Libido</string>
+    <string name="badge_sex_sexaholic">Sexaholic</string>
+
+</resources>

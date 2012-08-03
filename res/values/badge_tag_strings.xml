@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Notification labels -->
+    <string name="notification_tag_expired">%s Expired.</string>
+    <string name="notification_tag_set_new">Select to set a new %s.</string>
+
+    <!-- Homescreen Labels -->
+    <string name="label_tags">Tags</string>
+    <string name="label_badges">Badges</string>
+    <string name="label_no_tags">No Tags Yet.\n\nPlease add a tag widget to your homescreen and press it to tag your life.</string>
+	<string name="label_no_badges">No Badges Yet.\n\nEarn badges by adding a tag widget to your homescreen and tagging your life.</string>
+	<string name="label_lifetag">Life Tag</string>
+
+	<!-- Content Descriptions -->
+    <string name="content_descr_item_image">item image</string>
+    <string name="dialog_lifetag">Tag Your Life</string>
+
+    <!-- Dialog Bits -->
+    <string name="dialog_badge_title_single">You earned a new badge!</string>
+    <string name="dialog_badge_title_multiple">You earned new badges!</string>
+    <string name="dialog_for_how_long">For how long…</string>
+
+</resources>

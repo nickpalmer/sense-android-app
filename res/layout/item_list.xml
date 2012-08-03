@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffff"
+    android:cacheColorHint="#00000000" >
+
+    <!-- Top application banner -->
+
+    <TextView
+        android:id="@+id/sense_banner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#e0e0e0"
+        android:drawableLeft="@drawable/ic_logo_sense"
+        android:drawablePadding="6dp"
+        android:gravity="center_vertical"
+        android:padding="6dp"
+        android:paddingLeft="8dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <ListView
+        android:id="@+id/items_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/sense_banner" >
+    </ListView>
+
+</RelativeLayout>

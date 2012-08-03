@@ -206,7 +206,8 @@
                 <category android:name="nl.sense_os.app" />
             </intent-filter>
         </receiver>
-        <receiver android:name="nl.sense_os.service.configuration.RequirementReceiver" 
+        <receiver
+            android:name="nl.sense_os.service.configuration.RequirementReceiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="nl.sense_os.service.push.got_requirement" />
@@ -217,6 +218,46 @@
             android:name="nl.sense_os.service.provider.SensorDataProvider"
             android:authorities="nl.sense_os.platform.provider.LocalStorage"
             android:exported="true" />
+
+        <!-- COMPONENTS FOR BADGE AND TAG SYSTEM -->
+
+        <!-- app widget dialog activity for life tag widget -->
+        <activity
+            android:name=".appwidget.LifeTagWidget$Receiver"
+            android:configChanges="orientation"
+            android:theme="@style/Sense.Dialog" />
+
+        <!-- app widget provider for life tag widget -->
+        <receiver android:name=".appwidget.LifeTagWidget$Provider"
+            android:exported="false"  >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/lifetag_provider_info" />
+        </receiver>
+
+        <activity
+            android:name=".tags.TagsActivity"
+            android:configChanges="orientation"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".badges.BadgesActivity"
+            android:configChanges="orientation"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
