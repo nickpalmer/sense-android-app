@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/calendar_layout"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/sense_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e0e0e0"
+        android:drawableLeft="@drawable/ic_logo_sense"
+        android:drawablePadding="6dp"
+        android:drawableRight="@drawable/ic_logo_vu"
+        android:gravity="center_vertical"
+        android:padding="6dp"
+        android:paddingLeft="8dp"
+        android:text="@string/label_tag_calendar"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</LinearLayout>

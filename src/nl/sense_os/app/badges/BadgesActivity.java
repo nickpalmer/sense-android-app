@@ -24,7 +24,8 @@ public class BadgesActivity extends TwoLineListActivity {
 		List<BadgeInfo> badges = BadgeDB.getAllEarnedBadges(this);
 
 		List<Map<String, Object>> badgeInfoList = new ArrayList<Map<String, Object>>();
-		for (BadgeInfo badge : badges) {
+		for (int i = 0; i < badges.size(); i++) {
+			BadgeInfo badge = badges.get(i);
 			badgeInfoList.add(badge.asMap(this));
 		}
 

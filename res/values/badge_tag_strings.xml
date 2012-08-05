@@ -8,10 +8,11 @@
     <string name="label_tags">Tags</string>
     <string name="label_badges">Badges</string>
     <string name="label_no_tags">No Tags Yet.\n\nPlease add a tag widget to your homescreen and press it to tag your life.</string>
-	<string name="label_no_badges">No Badges Yet.\n\nEarn badges by adding a tag widget to your homescreen and tagging your life.</string>
-	<string name="label_lifetag">Life Tag</string>
+    <string name="label_no_badges">No Badges Yet.\n\nEarn badges by adding a tag widget to your homescreen and tagging your life.</string>
+    <string name="label_lifetag">Life Tag</string>
+    <string name="label_tag_calendar">Tag Calendar</string>
 
-	<!-- Content Descriptions -->
+    <!-- Content Descriptions -->
     <string name="content_descr_item_image">item image</string>
     <string name="dialog_lifetag">Tag Your Life</string>
 
@@ -19,5 +20,48 @@
     <string name="dialog_badge_title_single">You earned a new badge!</string>
     <string name="dialog_badge_title_multiple">You earned new badges!</string>
     <string name="dialog_for_how_long">For how long…</string>
+    <string name="dialog_tag_welcome_msg">Thanks for installing Life Tag! This application lets you Tag your Life Activities, and see a diary of what you have been up to, as well as earn badges for entering tags.\n\nThis application is part of a scientific study designed to help researchers at SenseOS and the VU University Amsterdam learn to recognize your behaviour and current status using your smartphone. Using the Sense platform this app will gather data about your activities and store it in the CommonSense data storage facility.\n\nBy using this application you concent to allowing your anonymized data to be used by researchers in order to better recognize your daily activities.\n\nNote that you have complete control over what data is gathered by your device using the preferences provided by the application.\n\nPlease login, or register a free CommonSense account and add the life tag widget to your homescreen to begin tagging your life.\n\nThank you for participating in our research!</string>
+
+    <!-- VU License requirements -->
+    <string name="menu_license">License Information</string>
+    <string name="dialog_license_title">License Information</string>
+    <string name="dialog_license_msg">Some Icons Copyright © by their respective creators:
+\n\n
+http://www.artdesigner.lv\n
+http://andyeveland.com\n
+http://www.thenounproject.com\n
+http://theoriginalmoody.deviantart.com\n
+http://vistaico.com\n
+\n\n
+Portions of the software that make up this application are
+Copyright © 2008-2012 Vrije Universiteit, The Netherlands All rights
+reserved.
+\n\n
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+\n\n
+Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.
+\n\n
+Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+\n\n
+Neither the name of the Vrije Universiteit nor the names of its contributors
+may be used to endorse or promote products derived from this software without
+specific prior written permission.
+\n\n
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS\'\'
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+</string>
 
 </resources>

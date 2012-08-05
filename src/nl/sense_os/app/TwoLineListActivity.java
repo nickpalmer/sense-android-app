@@ -39,7 +39,13 @@ public abstract class TwoLineListActivity extends FragmentActivity {
 
 		ListView listView = (ListView) findViewById(R.id.items_list);
 		setEmptyView(listView, mEmptyLabel);
+	}
+
+	@Override
+	public void onStart() {
+		ListView listView = (ListView) findViewById(R.id.items_list);
 		setListAdapter(listView, getDataList());
+		super.onStart();
 	}
 
 	/**

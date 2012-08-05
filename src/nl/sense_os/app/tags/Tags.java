@@ -36,12 +36,18 @@ public class Tags {
 		public final int mDrawable;
 		public final int mDescription;
 
-		public String timestamp;
+		public String mTimestamp;
 
 
 		public TagInfo(int drawable, int description) {
 			mDrawable = drawable;
 			mDescription = description;
+		}
+
+		public TagInfo(TagInfo info, String timestamp) {
+			mDrawable = info.mDrawable;
+			mDescription = info.mDescription;
+			mTimestamp = timestamp;
 		}
 
 		/**
@@ -52,8 +58,13 @@ public class Tags {
 			HashMap<String, Object> tagMap = new HashMap<String, Object>();
 			tagMap.put("i", mDrawable);
 			tagMap.put("t", context.getString(mDescription));
-			tagMap.put("ts", timestamp);
+			tagMap.put("ts", mTimestamp);
 			return tagMap;
+		}
+
+		@Override
+		public String toString() {
+			return mDescription + ":" + mDrawable + ":" + mTimestamp;
 		}
 	}
 
@@ -127,5 +138,19 @@ public class Tags {
 	/* Make sure the widgets are registered. This should come last. */
 	static {
 		TagWidgetRegistry.registerWidgets();
+	}
+
+	/**
+	 * Returns a TagInfo info with the timestamp set.
+	 * @param id the id for the requested info
+	 * @param timestamp the timestamp to set
+	 * @return a TagInfo with the timestamp set
+	 */
+	public static TagInfo getTagInfo(TagId id, String timestamp) {
+		TagInfo info = getTagInfo(id);
+		if (info != null) {
+			info = new TagInfo(info, timestamp);
+		}
+		return info;
 	}
 }

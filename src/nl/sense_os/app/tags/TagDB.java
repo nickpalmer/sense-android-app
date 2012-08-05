@@ -6,6 +6,7 @@ import java.util.List;
 import nl.sense_os.app.tags.Tags.TagId;
 import nl.sense_os.app.tags.Tags.TagInfo;
 
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -35,11 +36,15 @@ public class TagDB {
 	private static final String SENSOR_SELECTION = SENSOR_COLUMN_NAME + "=?";
 	private static final String[] TAGID_PROJECTION = {TAGID_COLUMN_NAME, TAGNAME_COLUMN_NAME};
 	private static final String LIMIT_ONE = "1";
-	private static final String ORDERBY_TIMESTAMP_DESC = "TIMESTAMP DESC";
+	private static final String ORDERBY_TIMESTAMP_ASC = "timestamp ASC";
+	private static final String ORDERBY_TIMESTAMP_DSC = "timestamp DESC";
+
 
 	private static final String[] TAG_PROJECTION = {SENSOR_COLUMN_NAME, TAGNAME_COLUMN_NAME,
 		TAGID_COLUMN_NAME, TIMESTAMP_COLUMN_NAME};
+	private static final String DATE_SELECTION = "timestamp LIKE ?";
 
+	@TargetApi(11)
 	private static class TagDBHelper extends SQLiteOpenHelper {
 
 		public TagDBHelper(Context context, String name, CursorFactory factory,
@@ -113,7 +118,7 @@ public class TagDB {
 			try {
 				Cursor c = db.query(TAG_TABLE_NAME, TAGID_PROJECTION,
 						SENSOR_SELECTION, new String[] {mSensorName},
-						null, null, ORDERBY_TIMESTAMP_DESC, LIMIT_ONE);
+						null, null, ORDERBY_TIMESTAMP_DSC, LIMIT_ONE);
 				if (c != null) {
 					try {
 						if (c.moveToFirst()) {
@@ -135,28 +140,57 @@ public class TagDB {
 	}
 
 	/**
-	 * @param context the context to work in.
-	 * @return all tags made by the user
+	 * Returns a lits of tags, possibly restricted by a year, month and day.
+	 *
+	 * @param context the context to work in
+	 * @param year a year > 0 will be used to restrict to that year
+	 * @param month a month > 0 will be used to restrict the month and year
+	 * @param day a day > 0 will be used to restrict the day month and year.
+	 * @return the tags for the requested date.
 	 */
-	public static List<TagInfo> getAllTags(
-			Context context) {
+	public static List<TagInfo> getAllTags(Context context,
+			int year, int month, int day) {
 		SQLiteDatabase db = getTagDb(context, false);
 		List<TagInfo> tags = new ArrayList<TagInfo>();
 
 		try {
 			db.beginTransaction();
 			try {
-				Cursor c = db.query(TAG_TABLE_NAME, TAG_PROJECTION,
-						null, null,
-						null, null, ORDERBY_TIMESTAMP_DESC);
+				Cursor c;
+				if (year < 0) {
+					c = db.query(TAG_TABLE_NAME, TAG_PROJECTION,
+							null, null,
+							null, null, ORDERBY_TIMESTAMP_ASC);
+				} else {
+					StringBuffer date = new StringBuffer();
+					date.append(year);
+					if (month > 0) {
+						date.append("-");
+						if (month < 10) {
+							date.append("0");
+						}
+						date.append(month);
+
+						if (day > 0) {
+							date.append("-");
+							if (day < 10) {
+								date.append("0");
+							}
+							date.append(day);
+						}
+					}
+					date.append("%");
+
+					c = db.query(TAG_TABLE_NAME, TAG_PROJECTION,
+							DATE_SELECTION, new String[] { date.toString() },
+							null, null, ORDERBY_TIMESTAMP_ASC);
+				}
 				if (c != null && c.getCount() > 0) {
 					do {
 						c.moveToNext();
 
 						TagId id = new TagId(c.getString(0), c.getString(1), c.getInt(2));
-						TagInfo info = Tags.getTagInfo(id);
-						info.timestamp = c.getString(3);
-
+						TagInfo info = Tags.getTagInfo(id, c.getString(3));
 						tags.add(info);
 					} while (!c.isLast());
 				}

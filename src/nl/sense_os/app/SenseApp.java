@@ -8,13 +8,14 @@ package nl.sense_os.app;
 
 import nl.sense_os.app.badges.BadgesActivity;
 import nl.sense_os.app.dialogs.FaqDialog;
+import nl.sense_os.app.dialogs.LicenseDialog;
 import nl.sense_os.app.dialogs.LogoutConfirmDialog;
 import nl.sense_os.app.dialogs.LogoutConfirmDialog.LogoutActivity;
 import nl.sense_os.app.dialogs.WelcomeDialog;
 import nl.sense_os.app.dialogs.WelcomeDialog.WelcomeActivity;
 import nl.sense_os.app.login.LoginActivity;
 import nl.sense_os.app.register.RegisterActivity;
-import nl.sense_os.app.tags.TagsActivity;
+import nl.sense_os.app.tags.TagsCalendar;
 import nl.sense_os.service.ISenseService;
 import nl.sense_os.service.ISenseServiceCallback;
 import nl.sense_os.service.SenseService;
@@ -249,7 +250,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 		} else if (v.getId() == R.id.prefs_field) {
 			startActivity(new Intent(this, SenseSettings.class));
 		} else if (v.getId() == R.id.tags_button) {
-			startActivity(new Intent(this, TagsActivity.class));
+			startActivity(new Intent(this, TagsCalendar.class));
 		} else  if (v.getId() == R.id.badges_button) {
 			startActivity(new Intent(this, BadgesActivity.class));
 		} else {
@@ -298,6 +299,9 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 		case R.id.menu_register:
 			startRegister();
 			break;
+		case R.id.menu_license:
+			showLicense();
+			break;
 		default:
 			Log.w(TAG, "Unexpected option item selected: " + item);
 			return false;
@@ -336,6 +340,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 		}
 
 		menu.findItem(R.id.menu_login).setVisible(!loggedIn);
+		menu.findItem(R.id.menu_license).setVisible(true);
 		menu.findItem(R.id.menu_logout).setVisible(loggedIn);
 		menu.findItem(R.id.menu_register).setVisible(!loggedIn);
 
@@ -375,6 +380,11 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 	public void showFaq() {
 		FaqDialog faqDialog = new FaqDialog();
 		faqDialog.show(getSupportFragmentManager(), "faq");
+	}
+
+	public void showLicense() {
+		LicenseDialog licenseDialog = new LicenseDialog();
+		licenseDialog.show(getSupportFragmentManager(), "license");
 	}
 
 	/**

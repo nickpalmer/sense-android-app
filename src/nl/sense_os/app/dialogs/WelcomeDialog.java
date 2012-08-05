@@ -44,7 +44,7 @@ public class WelcomeDialog extends DialogFragment {
 
         builder.setIcon(android.R.drawable.ic_dialog_info);
         builder.setTitle(R.string.dialog_welcome_title);
-        builder.setMessage(R.string.dialog_welcome_msg);
+        builder.setMessage(R.string.dialog_tag_welcome_msg);
         builder.setPositiveButton(R.string.button_login, new OnClickListener() {
 
             @Override

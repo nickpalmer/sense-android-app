@@ -250,6 +250,16 @@
         </activity>
 
         <activity
+            android:name=".tags.TagsCalendar"
+            android:configChanges="orientation"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".badges.BadgesActivity"
             android:configChanges="orientation"
             android:exported="false" >
