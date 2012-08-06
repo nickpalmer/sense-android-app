@@ -1,6 +1,6 @@
 package nl.sense_os.app.login;
 
-import nl.sense_os.app.R;
+import nl.vu.lifetag.R;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -12,75 +12,75 @@ import android.widget.EditText;
 
 public class LoginDialog extends DialogFragment {
 
-    public static interface ILoginActivity {
+	public static interface ILoginActivity {
 
-        /**
-         * Called when the login dialog is canceled
-         */
-        void onCancel();
+		/**
+		 * Called when the login dialog is canceled
+		 */
+		void onCancel();
 
-        /**
-         * Called when the user presses the login button
-         * 
-         * @param username
-         *            Value of the username field (can be null)
-         * @param password
-         *            Value of the password field (can be null)
-         */
-        void onSubmit(String username, String password);
-    }
+		/**
+		 * Called when the user presses the login button
+		 * 
+		 * @param username
+		 *            Value of the username field (can be null)
+		 * @param password
+		 *            Value of the password field (can be null)
+		 */
+		void onSubmit(String username, String password);
+	}
 
-    public static LoginDialog newInstance(ILoginActivity listener) {
-        LoginDialog dialog = new LoginDialog();
-        dialog.setListener(listener);
-        return dialog;
-    }
+	public static LoginDialog newInstance(ILoginActivity listener) {
+		LoginDialog dialog = new LoginDialog();
+		dialog.setListener(listener);
+		return dialog;
+	}
 
-    private ILoginActivity listener;
+	private ILoginActivity listener;
 
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Log.d(TAG, "onCreateDialog");
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		// Log.d(TAG, "onCreateDialog");
 
-        // create builder
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		// create builder
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        // prepare content view
-        View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_login, null);
-        final EditText usernameField = (EditText) view.findViewById(R.id.login_username);
-        final EditText passField = (EditText) view.findViewById(R.id.login_pass);
+		// prepare content view
+		View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_login, null);
+		final EditText usernameField = (EditText) view.findViewById(R.id.login_username);
+		final EditText passField = (EditText) view.findViewById(R.id.login_pass);
 
-        builder.setTitle(R.string.dialog_login_title);
-        builder.setIcon(R.drawable.ic_dialog_sense);
-        builder.setView(view);
-        builder.setPositiveButton(R.string.button_login, new OnClickListener() {
+		builder.setTitle(R.string.dialog_login_title);
+		builder.setIcon(R.drawable.ic_dialog_sense);
+		builder.setView(view);
+		builder.setPositiveButton(R.string.button_login, new OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String username = usernameField.getText() == null ? null : usernameField.getText()
-                        .toString();
-                String password = passField.getText() == null ? null : passField.getText()
-                        .toString();
-                listener.onSubmit(username, password);
-            }
-        });
-        builder.setNegativeButton(android.R.string.cancel, new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				String username = usernameField.getText() == null ? null : usernameField.getText()
+						.toString();
+				String password = passField.getText() == null ? null : passField.getText()
+						.toString();
+				listener.onSubmit(username, password);
+			}
+		});
+		builder.setNegativeButton(android.R.string.cancel, new OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        return builder.create();
-    }
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		return builder.create();
+	}
 
-    @Override
-    public void onCancel(DialogInterface dialog) {
-        // Log.d(TAG, "onCancel");
-        listener.onCancel();
-    }
+	@Override
+	public void onCancel(DialogInterface dialog) {
+		// Log.d(TAG, "onCancel");
+		listener.onCancel();
+	}
 
-    private void setListener(ILoginActivity listener) {
-        this.listener = listener;
-    }
+	private void setListener(ILoginActivity listener) {
+		this.listener = listener;
+	}
 }

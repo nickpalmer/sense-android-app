@@ -1,6 +1,6 @@
 package nl.sense_os.app.dialogs;
 
-import nl.sense_os.app.R;
+import nl.vu.lifetag.R;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;

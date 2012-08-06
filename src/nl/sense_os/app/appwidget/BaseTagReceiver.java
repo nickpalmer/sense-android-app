@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import nl.sense_os.app.R;
 import nl.sense_os.app.SenseApp;
 import nl.sense_os.app.badges.Badges;
 import nl.sense_os.app.badges.Badges.BadgeInfo;
@@ -13,6 +12,7 @@ import nl.sense_os.app.tags.Tags;
 import nl.sense_os.app.tags.Tags.TagId;
 import nl.sense_os.app.tags.Tags.TagInfo;
 import nl.sense_os.service.constants.SensorData.DataPoint;
+import nl.vu.lifetag.R;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -60,7 +60,8 @@ public class BaseTagReceiver extends FragmentActivity {
 
 		mConfig = config;
 
-		new TagSensorRegistrator(this, mConfig.mSensorName, mConfig.mDisplayName, mConfig.mDescription, mConfig.mDataType);
+		new TagSensorRegistrator(this, mConfig.mSensorName, mConfig.mDisplayName,
+				mConfig.mDescription, mConfig.mDataType);
 	}
 
 	/**
@@ -132,8 +133,7 @@ public class BaseTagReceiver extends FragmentActivity {
 			return dialog;
 		}
 
-		private ListAdapter getBadgeListAdapter(FragmentActivity activity,
-				List<BadgeInfo> badges2) {
+		private ListAdapter getBadgeListAdapter(FragmentActivity activity, List<BadgeInfo> badges2) {
 			List<Map<String, Object>> data = getBadgeList(activity, badges);
 			SimpleAdapter adapter = new SimpleAdapter(activity, data, R.layout.item_list_item,
 					new String[] { "i", "t" }, new int[] { R.id.item_image, R.id.item_label }) {
@@ -147,8 +147,8 @@ public class BaseTagReceiver extends FragmentActivity {
 			return adapter;
 		}
 
-		private List<Map<String, Object>> getBadgeList(
-				FragmentActivity activity, List<BadgeInfo> badges) {
+		private List<Map<String, Object>> getBadgeList(FragmentActivity activity,
+				List<BadgeInfo> badges) {
 			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 			for (BadgeInfo badgeInfo : badges) {
 				list.add(badgeInfo.asMap(activity));
@@ -204,8 +204,8 @@ public class BaseTagReceiver extends FragmentActivity {
 
 		private ListAdapter getTimeListAdapter(FragmentActivity context) {
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
-					android.R.layout.select_dialog_singlechoice,
-					context.getResources().getStringArray(R.array.time_names));
+					android.R.layout.select_dialog_singlechoice, context.getResources()
+							.getStringArray(R.array.time_names));
 
 			return adapter;
 		}
@@ -215,7 +215,8 @@ public class BaseTagReceiver extends FragmentActivity {
 
 				@Override
 				public void onClick(DialogInterface arg0, int which) {
-					AlarmManager manager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+					AlarmManager manager = (AlarmManager) getActivity().getSystemService(
+							Context.ALARM_SERVICE);
 					int[] times = getActivity().getResources().getIntArray(R.array.time_values);
 
 					// Build the pending intent
@@ -223,17 +224,20 @@ public class BaseTagReceiver extends FragmentActivity {
 					intent.putExtra(BaseTagProvider.EXTRA_ALARM, true);
 					intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
 					intent.setClassName(getActivity(), mConfig.mProvider.getName());
-					PendingIntent operation = PendingIntent.getBroadcast(getActivity(), 0, intent, 0);
+					PendingIntent operation = PendingIntent.getBroadcast(getActivity(), 0, intent,
+							0);
 
 					// Cancel any equivalent alarms
 					manager.cancel(operation);
 					long time = System.currentTimeMillis() + (times[which] * 60 * 1000);
-					Log.d(TAG, "Setting Alarm:" + times[which] + " : " + time + " " + (time - System.currentTimeMillis()));
+					Log.d(TAG, "Setting Alarm:" + times[which] + " : " + time + " "
+							+ (time - System.currentTimeMillis()));
 
 					// And set a new alarm
 					manager.set(AlarmManager.RTC_WAKEUP, time, operation);
 
-					TagId tag = TagDB.getLastTag(getActivity(), mConfig.mSensorName, mConfig.mDefaultTagId);
+					TagId tag = TagDB.getLastTag(getActivity(), mConfig.mSensorName,
+							mConfig.mDefaultTagId);
 
 					List<BadgeInfo> badges = Badges.getEarnedBadges(getActivity(), tag);
 					if (badges == null) {
@@ -241,7 +245,8 @@ public class BaseTagReceiver extends FragmentActivity {
 						TagTimeDialog.this.dismiss();
 					} else {
 						EarnedBadgesDialog badgeDialog = new EarnedBadgesDialog(badges);
-						badgeDialog.show(getSupportFragmentManager(), mConfig.mSensorName + "badges");
+						badgeDialog.show(getSupportFragmentManager(), mConfig.mSensorName
+								+ "badges");
 						// Go straight to the top to dismiss without finishing.
 						TagTimeDialog.this.dismiss(false);
 					}
@@ -280,7 +285,8 @@ public class BaseTagReceiver extends FragmentActivity {
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
 			// Cancel any notifications for this tag.
-			NotificationManager nm = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+			NotificationManager nm = (NotificationManager) getApplicationContext()
+					.getSystemService(Context.NOTIFICATION_SERVICE);
 			nm.cancel(mConfig.mSensorName.hashCode());
 
 			listAdapter = getListAdapter(getActivity(), mConfig.mTags);

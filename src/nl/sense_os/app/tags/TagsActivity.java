@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import nl.sense_os.app.TwoLineListActivity;
+import nl.sense_os.app.tags.Tags.TagInfo;
+import nl.vu.lifetag.R;
 import android.content.Intent;
 import android.widget.TextView;
 
-import nl.sense_os.app.R;
-import nl.sense_os.app.TwoLineListActivity;
-import nl.sense_os.app.tags.Tags.TagInfo;
-
 /**
  * This activity shows a list of tags made by the user.
- *
+ * 
  * @author Nick Palmer &lt;nick@sluggardy.net&gt;
- *
+ * 
  */
 public class TagsActivity extends TwoLineListActivity {
 

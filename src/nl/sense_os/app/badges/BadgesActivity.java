@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import nl.sense_os.app.R;
 import nl.sense_os.app.TwoLineListActivity;
 import nl.sense_os.app.badges.Badges.BadgeInfo;
+import nl.vu.lifetag.R;
 
 /**
  * This activity shows a list of badges earned by the user.
- *
+ * 
  * @author Nick Palmer &lt;nick@sluggardy.net&gt;
- *
+ * 
  */
 public class BadgesActivity extends TwoLineListActivity {
 
@@ -31,6 +31,5 @@ public class BadgesActivity extends TwoLineListActivity {
 
 		return badgeInfoList;
 	}
-
 
 }
