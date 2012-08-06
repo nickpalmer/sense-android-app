@@ -3,6 +3,7 @@ package nl.sense_os.app;
 import java.util.List;
 import java.util.Map;
 
+import nl.vu.lifetag.R;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
@@ -13,9 +14,9 @@ import android.widget.TextView;
 
 /**
  * This activity is a base class for activities showing a list of time stamped items with images.
- *
+ * 
  * @author Nick Palmer &lt;nick@sluggardy.net&gt;
- *
+ * 
  */
 public abstract class TwoLineListActivity extends FragmentActivity {
 
@@ -49,16 +50,17 @@ public abstract class TwoLineListActivity extends FragmentActivity {
 	}
 
 	/**
-	 * The data maps should have keys "i" with a drawable id, "t" with text, and "ts" with a timestamp text.
+	 * The data maps should have keys "i" with a drawable id, "t" with text, and "ts" with a
+	 * timestamp text.
+	 * 
 	 * @return the list of data.
 	 */
 	protected abstract List<Map<String, Object>> getDataList();
 
-	private void setListAdapter(ListView listView,
-			List<Map<String, Object>> data) {
+	private void setListAdapter(ListView listView, List<Map<String, Object>> data) {
 		SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.item_list_twoline_item,
-				new String[] { "i", "t", "ts" },
-				new int[] { R.id.item_twoline_image, R.id.item_twoline_label, R.id.item_twoline_timestamp }) {
+				new String[] { "i", "t", "ts" }, new int[] { R.id.item_twoline_image,
+						R.id.item_twoline_label, R.id.item_twoline_timestamp }) {
 
 			// Disable everything in the list.
 			public boolean isEnabled(int position) {
@@ -71,8 +73,11 @@ public abstract class TwoLineListActivity extends FragmentActivity {
 
 	/**
 	 * Sets up the empty view for the list.
-	 * @param listView the list view to add the empty view to
-	 * @param emptyTextId the text to show when the list is empty
+	 * 
+	 * @param listView
+	 *            the list view to add the empty view to
+	 * @param emptyTextId
+	 *            the text to show when the list is empty
 	 */
 	private void setEmptyView(ListView listView, int emptyTextId) {
 		TextView emptyView = new TextView(this);

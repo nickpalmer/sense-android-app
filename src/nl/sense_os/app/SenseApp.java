@@ -23,6 +23,7 @@ import nl.sense_os.service.constants.SensePrefs;
 import nl.sense_os.service.constants.SensePrefs.Auth;
 import nl.sense_os.service.constants.SensePrefs.Status;
 import nl.sense_os.service.constants.SenseStatusCodes;
+import nl.vu.lifetag.R;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -193,7 +194,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 
 	/**
 	 * Handles clicks on the UI.
-	 *
+	 * 
 	 * @param v
 	 *            the View that was clicked.
 	 */
@@ -251,7 +252,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 			startActivity(new Intent(this, SenseSettings.class));
 		} else if (v.getId() == R.id.tags_button) {
 			startActivity(new Intent(this, TagsCalendar.class));
-		} else  if (v.getId() == R.id.badges_button) {
+		} else if (v.getId() == R.id.badges_button) {
 			startActivity(new Intent(this, BadgesActivity.class));
 		} else {
 			Log.e(TAG, "Unknown button pressed!");
@@ -609,7 +610,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 	 * Toggles the Sense service state. The service is started using <code>startService</code>, and
 	 * then the activity binds to the service. Alternatively, the service is stopped and the
 	 * Activity unbinds itself.
-	 *
+	 * 
 	 * Afterwards, the UI is updated to make the ToggleButtons show the new service state.
 	 */
 	private void toggleMain(boolean active) {
@@ -723,7 +724,7 @@ public class SenseApp extends FragmentActivity implements WelcomeActivity, Logou
 
 	/**
 	 * Enables the checkboxes to show the status of the Sense Platform service.
-	 *
+	 * 
 	 * @param status
 	 *            The status of the service.
 	 * @see {@link Status#STATUSCODE_RUNNING}

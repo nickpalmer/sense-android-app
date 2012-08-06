@@ -3,12 +3,12 @@ package nl.sense_os.app.appwidget;
 import java.util.HashMap;
 import java.util.Map;
 
-import nl.sense_os.app.R;
 import nl.sense_os.app.badges.BadgeDB;
 import nl.sense_os.app.tags.TagDB;
 import nl.sense_os.app.tags.Tags;
 import nl.sense_os.app.tags.Tags.TagId;
 import nl.sense_os.app.tags.Tags.TagInfo;
+import nl.vu.lifetag.R;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -22,9 +22,9 @@ import android.widget.RemoteViews;
 
 /**
  * This class is the Base AppWidgetProvider for "Tagging" widgets.
- *
+ * 
  * @author Nick Palmer &lt;nick@sluggardy.net&gt;
- *
+ * 
  */
 public class BaseTagProvider extends AppWidgetProvider {
 
@@ -41,7 +41,9 @@ public class BaseTagProvider extends AppWidgetProvider {
 
 	/**
 	 * Constructs a new provider for the given widget configuration.
-	 * @param config the configuration for the widget.
+	 * 
+	 * @param config
+	 *            the configuration for the widget.
 	 */
 	public BaseTagProvider(TagWidgetConfiguration config) {
 		mConfig = config;
@@ -70,8 +72,11 @@ public class BaseTagProvider extends AppWidgetProvider {
 				// Setup the notification
 				TagInfo defaultInfo = Tags.getTagInfo(mConfig.mDefaultTagId);
 				int icon = defaultInfo.mDrawable;
-				CharSequence contentTitle = context.getString(R.string.notification_tag_expired, mConfig.mDisplayName);
-				CharSequence tickerText = context.getString(R.string.notification_tag_set_new, mConfig.mDisplayName);				long when = System.currentTimeMillis();
+				CharSequence contentTitle = context.getString(R.string.notification_tag_expired,
+						mConfig.mDisplayName);
+				CharSequence tickerText = context.getString(R.string.notification_tag_set_new,
+						mConfig.mDisplayName);
+				long when = System.currentTimeMillis();
 
 				Notification notification = new Notification(icon, tickerText, when);
 				notification.flags = Notification.FLAG_AUTO_CANCEL;
@@ -85,7 +90,8 @@ public class BaseTagProvider extends AppWidgetProvider {
 
 				notification.setLatestEventInfo(context, contentTitle, tickerText, pendingIntent);
 
-				NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+				NotificationManager nm = (NotificationManager) context
+						.getSystemService(Context.NOTIFICATION_SERVICE);
 				nm.notify(mConfig.mSensorName.hashCode(), notification);
 
 				BaseTagProvider.forceUpdate(context, mConfig.mProvider.getName());
@@ -138,8 +144,11 @@ public class BaseTagProvider extends AppWidgetProvider {
 
 	/**
 	 * Forces an update of the given widget.
-	 * @param context the context to work in
-	 * @param componentName the widget to force update for.
+	 * 
+	 * @param context
+	 *            the context to work in
+	 * @param componentName
+	 *            the widget to force update for.
 	 */
 	public static void forceUpdate(Context context, String componentName) {
 		Log.d(TAG, "forcing update.");
