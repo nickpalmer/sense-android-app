@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="nl.sense_os.app"
+    package="nl.vu.lifetag"
     android:versionCode="20120801"
-    android:versionName="2.5.0" >
+    android:versionName="1.0.0" >
 
     <uses-feature
         android:name="android.hardware.location.gps"
@@ -69,7 +69,7 @@
 
         <!-- COMPONENTS OF SENSE PLATFORM FRONT-END -->
         <activity
-            android:name="SenseApp"
+            android:name="nl.sense_os.app.SenseApp"
             android:configChanges="orientation"
             android:label="@string/sense_app_label" >
             <intent-filter>
@@ -78,47 +78,47 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-                <action android:name="nl.sense_os.platform.SenseApp" />
+                <action android:name="nl.vu.lifetag.SenseApp" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".login.LoginActivity"
+            android:name="nl.sense_os.app.login.LoginActivity"
             android:configChanges="orientation"
             android:label="@string/sense_app_label"
             android:theme="@style/Sense.Dialog" />
         <activity
-            android:name=".register.RegisterActivity"
+            android:name="nl.sense_os.app.register.RegisterActivity"
             android:configChanges="orientation"
             android:label="@string/sense_app_label"
             android:theme="@style/Sense.Dialog" />
         <activity
-            android:name="SenseSettings"
+            android:name="nl.sense_os.app.SenseSettings"
             android:configChanges="orientation"
             android:label="@string/sense_app_label"
             android:theme="@style/Sense.Prefs" />
 
         <service
-            android:name=".appwidget.SenseWidgetUpdater"
+            android:name="nl.sense_os.app.appwidget.SenseWidgetUpdater"
             android:exported="false" >
             <intent-filter>
-                <action android:name="nl.sense_os.platform.AppWidgetUpdate" />
-                <action android:name="nl.sense_os.platform.StartPhoneState" />
-                <action android:name="nl.sense_os.platform.StopPhoneState" />
-                <action android:name="nl.sense_os.platform.StartLocation" />
-                <action android:name="nl.sense_os.platform.StopLocation" />
-                <action android:name="nl.sense_os.platform.StartMotion" />
-                <action android:name="nl.sense_os.platform.StopMotion" />
-                <action android:name="nl.sense_os.platform.StartAmbience" />
-                <action android:name="nl.sense_os.platform.StopAmbience" />
-                <action android:name="nl.sense_os.platform.StartDevices" />
-                <action android:name="nl.sense_os.platform.StopDevices" />
+                <action android:name="nl.vu.lifetag.AppWidgetUpdate" />
+                <action android:name="nl.vu.lifetag.StartPhoneState" />
+                <action android:name="nl.vu.lifetag.StopPhoneState" />
+                <action android:name="nl.vu.lifetag.StartLocation" />
+                <action android:name="nl.vu.lifetag.StopLocation" />
+                <action android:name="nl.vu.lifetag.StartMotion" />
+                <action android:name="nl.vu.lifetag.StopMotion" />
+                <action android:name="nl.vu.lifetag.StartAmbience" />
+                <action android:name="nl.vu.lifetag.StopAmbience" />
+                <action android:name="nl.vu.lifetag.StartDevices" />
+                <action android:name="nl.vu.lifetag.StopDevices" />
             </intent-filter>
         </service>
 
         <receiver
-            android:name=".appwidget.SenseWidgetProvider"
+            android:name="nl.sense_os.app.appwidget.SenseWidgetProvider"
             android:exported="false" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -134,15 +134,15 @@
             android:name="nl.sense_os.service.SenseService"
             android:exported="false" >
             <intent-filter>
-                <action android:name="nl.sense_os.platform.SenseService" />
+                <action android:name="nl.vu.lifetag.SenseService" />
             </intent-filter>
         </service>
         <service
             android:name="nl.sense_os.service.MsgHandler"
             android:exported="false" >
             <intent-filter>
-                <action android:name="nl.sense_os.platform.MsgHandler.NEW_DATA" />
-                <action android:name="nl.sense_os.platform.MsgHandler.SEND_DATA" />
+                <action android:name="nl.vu.lifetag.MsgHandler.NEW_DATA" />
+                <action android:name="nl.vu.lifetag.MsgHandler.SEND_DATA" />
             </intent-filter>
         </service>
         <service android:name="nl.sense_os.service.commonsense.DefaultSensorRegistrationService" />
@@ -177,7 +177,7 @@
             android:name="nl.sense_os.service.AliveChecker"
             android:exported="false" >
             <intent-filter>
-                <action android:name="nl.sense_os.platform.AliveCheck" />
+                <action android:name="nl.vu.lifetag.AliveCheck" />
             </intent-filter>
         </receiver>
         <receiver
@@ -191,7 +191,7 @@
             android:name="nl.sense_os.service.DataTransmitter"
             android:exported="false" >
             <intent-filter>
-                <action android:name="nl.sense_os.platform.DataTransmit" />
+                <action android:name="nl.vu.lifetag.DataTransmit" />
             </intent-filter>
         </receiver>
         <receiver
@@ -216,19 +216,19 @@
 
         <provider
             android:name="nl.sense_os.service.provider.SensorDataProvider"
-            android:authorities="nl.sense_os.platform.provider.LocalStorage"
+            android:authorities="nl.vu.lifetag.provider.LocalStorage"
             android:exported="true" />
 
         <!-- COMPONENTS FOR BADGE AND TAG SYSTEM -->
 
         <!-- app widget dialog activity for life tag widget -->
         <activity
-            android:name=".appwidget.LifeTagWidget$Receiver"
+            android:name="nl.sense_os.app.appwidget.LifeTagWidget$Receiver"
             android:configChanges="orientation"
             android:theme="@style/Sense.Dialog" />
 
         <!-- app widget provider for life tag widget -->
-        <receiver android:name=".appwidget.LifeTagWidget$Provider"
+        <receiver android:name="nl.sense_os.app.appwidget.LifeTagWidget$Provider"
             android:exported="false"  >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -240,7 +240,7 @@
         </receiver>
 
         <activity
-            android:name=".tags.TagsActivity"
+            android:name="nl.sense_os.app.tags.TagsActivity"
             android:configChanges="orientation"
             android:exported="false" >
             <intent-filter>
@@ -250,7 +250,7 @@
         </activity>
 
         <activity
-            android:name=".tags.TagsCalendar"
+            android:name="nl.sense_os.app.tags.TagsCalendar"
             android:configChanges="orientation"
             android:exported="false" >
             <intent-filter>
@@ -260,7 +260,7 @@
         </activity>
 
         <activity
-            android:name=".badges.BadgesActivity"
+            android:name="nl.sense_os.app.badges.BadgesActivity"
             android:configChanges="orientation"
             android:exported="false" >
             <intent-filter>

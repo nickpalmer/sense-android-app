@@ -68,24 +68,33 @@
     <string name="toast_toggle_external_sensors">External sensors will update every ?.</string>
     <string name="toast_toggle_ambience">Ambience measurements will update ?.</string>
     <string name="toast_toggle_phonestate">Changes in phone state will be shared with CommonSense.</string>
+    
+	<!-- actions for main sense service intents -->
+	<string name="action_sense_app">nl.vu.lifetag.SenseApp</string>
+    <string name="action_sense_service">nl.vu.lifetag.SenseService</string>
+    <string name="action_sense_new_data">nl.vu.lifetag.MsgHandler.NEW_DATA</string>
+    <string name="action_sense_send_data">nl.vu.lifetag.MsgHandler.SEND_DATA</string>
+    <string name="action_sense_alive_check_alarm">nl.vu.lifetag.AliveCheck</string>
+    <string name="action_sense_data_transmit_alarm">nl.vu.lifetag.DataTransmit</string>
+    <string name="action_sense_gcm_intent_service">nl.sense_os.service.push.GCMReceiver</string>
 
     <!-- action for the app widget -->
-    <string name="action_widget_update">nl.sense_os.platform.AppWidgetUpdate</string>
-    <string name="action_widget_start_phone_state">nl.sense_os.platform.StartPhoneState</string>
-    <string name="action_widget_start_location">nl.sense_os.platform.StartLocation</string>
-    <string name="action_widget_start_motion">nl.sense_os.platform.StartMotion</string>
-    <string name="action_widget_start_ambience">nl.sense_os.platform.StartAmbience</string>
-    <string name="action_widget_start_devices">nl.sense_os.platform.StartDevices</string>
-    <string name="action_widget_start_external">nl.sense_os.platform.StartExternal</string>
-    <string name="action_widget_stop_phone_state">nl.sense_os.platform.StopPhoneState</string>
-    <string name="action_widget_stop_location">nl.sense_os.platform.StopLocation</string>
-    <string name="action_widget_stop_motion">nl.sense_os.platform.StopMotion</string>
-    <string name="action_widget_stop_ambience">nl.sense_os.platform.StopAmbience</string>
-    <string name="action_widget_stop_devices">nl.sense_os.platform.StopDevices</string>
-    <string name="action_widget_stop_external">nl.sense_os.platform.StopExternal</string>
+    <string name="action_widget_update">nl.vu.lifetag.AppWidgetUpdate</string>
+    <string name="action_widget_start_phone_state">nl.vu.lifetag.StartPhoneState</string>
+    <string name="action_widget_start_location">nl.vu.lifetag.StartLocation</string>
+    <string name="action_widget_start_motion">nl.vu.lifetag.StartMotion</string>
+    <string name="action_widget_start_ambience">nl.vu.lifetag.StartAmbience</string>
+    <string name="action_widget_start_devices">nl.vu.lifetag.StartDevices</string>
+    <string name="action_widget_start_external">nl.vu.lifetag.StartExternal</string>
+    <string name="action_widget_stop_phone_state">nl.vu.lifetag.StopPhoneState</string>
+    <string name="action_widget_stop_location">nl.vu.lifetag.StopLocation</string>
+    <string name="action_widget_stop_motion">nl.vu.lifetag.StopMotion</string>
+    <string name="action_widget_stop_ambience">nl.vu.lifetag.StopAmbience</string>
+    <string name="action_widget_stop_devices">nl.vu.lifetag.StopDevices</string>
+    <string name="action_widget_stop_external">nl.vu.lifetag.StopExternal</string>
 
     <!-- LocalStorage authority, overwrite when bundling Sense into another app -->
-    <string name="local_storage_authority">nl.sense_os.platform.provider.LocalStorage</string>
+    <string name="local_storage_authority">nl.vu.lifetag.provider.LocalStorage</string>
     <string name="main_scr_header_main">Main switch</string>
     <string name="main_scr_header_sensors">Individual sensors</string>
     <string name="main_scr_msw_title">Sense service</string>
