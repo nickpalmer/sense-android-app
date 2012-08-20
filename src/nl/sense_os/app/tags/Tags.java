@@ -1,6 +1,10 @@
 package nl.sense_os.app.tags;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +30,9 @@ public class Tags {
 	private Tags() {
 
 	}
+
+	private static final DateFormat parser = new SimpleDateFormat("yyyy-M-d hh:mm:ss");
+	private static final DateFormat formatter = DateFormat.getTimeInstance(DateFormat.SHORT);
 
 	private static HashMap<TagId, TagInfo> sTags = new HashMap<TagId, TagInfo>();
 
@@ -58,7 +65,16 @@ public class Tags {
 			HashMap<String, Object> tagMap = new HashMap<String, Object>();
 			tagMap.put("i", mDrawable);
 			tagMap.put("t", context.getString(mDescription));
-			tagMap.put("ts", mTimestamp);
+			try {
+				if (mTimestamp != null) {
+					Date d = parser.parse(mTimestamp);
+					tagMap.put("ts", formatter.format(d));
+				} else {
+					tagMap.put("ts", mTimestamp);
+				}
+			} catch (ParseException e) {
+				tagMap.put("ts", mTimestamp);
+			}
 			return tagMap;
 		}
 

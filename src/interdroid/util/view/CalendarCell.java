@@ -40,9 +40,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
 
 
@@ -116,10 +115,6 @@ public class CalendarCell extends ImageView {
 	/** The width of this cell. */
 	private int	mWidth;
 
-	/** Is this cell being pressed? */
-	private boolean	mPressed;
-
-
 	/**
 	 * Construct a CalendarCell.
 	 * @param context context to work in
@@ -128,38 +123,39 @@ public class CalendarCell extends ImageView {
 	public CalendarCell(final Context context, final AttributeSet attrs) {
 		super(context, attrs);
 		this.setClickable(true);
-		// For some reason setPressed is not being called when this is pressed
-		// This on touch listener handles calling setPressed properly.
-		setOnTouchListener(new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(final View view, final MotionEvent event) {
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_DOWN:
-					setPressed(true);
-					break;
-				case MotionEvent.ACTION_MOVE:
-					// Build the view bounds.
-					int width = CalendarCell.this.getWidth();
-					int height = CalendarCell.this.getHeight();
-					Rect bounds = new Rect(0, 0, width, height);
-					// Is this a hit?
-					if (bounds.contains((int) event.getX(),
-							(int) event.getY())) {
-						setPressed(true);
-					} else {
-						setPressed(false);
-					}
-					break;
-				case MotionEvent.ACTION_UP:
-					setPressed(false);
-					break;
-				default:
-					break;
-				}
-				return false;
-			}
-		});
+		setBackgroundResource(nl.vu.lifetag.R.drawable.selector);
+//		// For some reason setPressed is not being called when this is pressed
+//		// This on touch listener handles calling setPressed properly.
+//		setOnTouchListener(new OnTouchListener() {
+//
+//			@Override
+//			public boolean onTouch(final View view, final MotionEvent event) {
+//				switch (event.getAction()) {
+//				case MotionEvent.ACTION_DOWN:
+//					setPressed(true);
+//					break;
+//				case MotionEvent.ACTION_MOVE:
+//					// Build the view bounds.
+//					int width = CalendarCell.this.getWidth();
+//					int height = CalendarCell.this.getHeight();
+//					Rect bounds = new Rect(0, 0, width, height);
+//					// Is this a hit?
+//					if (bounds.contains((int) event.getX(),
+//							(int) event.getY())) {
+//						setPressed(true);
+//					} else {
+//						setPressed(false);
+//					}
+//					break;
+//				case MotionEvent.ACTION_UP:
+//					setPressed(false);
+//					break;
+//				default:
+//					break;
+//				}
+//				return false;
+//			}
+//		});
 	}
 
 	/**
@@ -235,6 +231,24 @@ public class CalendarCell extends ImageView {
 		border.right -= 1;
 		border.bottom -= 1;
 		canvas.drawRect(border, paint);
+
+		if (this.getBackground() != null) {
+			Drawable bg = getBackground();
+			if (isPressed()) {
+				bg.setState(PRESSED_ENABLED_STATE_SET);
+			} else {
+				bg.setState(ENABLED_WINDOW_FOCUSED_STATE_SET);
+			}
+			bg.setBounds(border);
+			bg.draw(canvas);
+		} else if (isPressed()) {
+			paint.setStyle(Paint.Style.FILL_AND_STROKE);
+			paint.setColor(PRESSED_COLOR);
+			paint.setAlpha(TRANSPARENCY);
+			paint.setStrokeWidth(1);
+			canvas.drawRect(border, paint);
+		}
+
 		// If it is out of the month then draw an out overlay
 		if (!mInMonth) {
 			paint.setColor(OUT_COLOR);
@@ -282,15 +296,6 @@ public class CalendarCell extends ImageView {
 			canvas.drawArc(oval, 0, 90, false, paint);
 		}
 
-		// If it is pressed draw a white overlay.
-		if (mPressed) {
-			paint.setStyle(Paint.Style.FILL_AND_STROKE);
-			paint.setColor(PRESSED_COLOR);
-			paint.setAlpha(TRANSPARENCY);
-			paint.setStrokeWidth(1);
-			canvas.drawRect(border, paint);
-		}
-
 	}
 
 	/**
@@ -310,14 +315,6 @@ public class CalendarCell extends ImageView {
 	 */
 	public final void fireCalendarClick(final CalendarClickListener mListener) {
 		mListener.onCalendarClicked(mDay, mMonth, mYear);
-	}
-
-	@Override
-	public final void setPressed(final boolean pressed) {
-		if (mPressed != pressed) {
-			mPressed = pressed;
-			invalidate();
-		}
 	}
 
 }

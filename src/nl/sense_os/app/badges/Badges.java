@@ -1,6 +1,10 @@
 package nl.sense_os.app.badges;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +34,10 @@ public final class Badges {
 	private Badges() {
 
 	}
+
+	private static final DateFormat parser = new SimpleDateFormat("yyyy-M-d hh:mm:ss");
+	private static final DateFormat formatter =
+			DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
 
 	/**
 	 * The map from a badge to the info for that badge
@@ -68,7 +76,17 @@ public final class Badges {
 			HashMap<String, Object> badgeMap = new HashMap<String, Object>();
 			badgeMap.put("i", drawable);
 			badgeMap.put("t", context.getString(name));
-			badgeMap.put("ts", timestamp);
+			try {
+				if (timestamp != null) {
+					Date d = parser.parse(timestamp);
+					badgeMap.put("ts", formatter.format(d));
+				} else {
+					badgeMap.put("ts", timestamp);
+				}
+
+			} catch (ParseException e) {
+				badgeMap.put("ts", timestamp);
+			}
 			return badgeMap;
 		}
 

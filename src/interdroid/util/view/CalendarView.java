@@ -129,6 +129,7 @@ public class CalendarView extends LinearLayout {
 			if (mListener != null) {
 				CalendarCell cell = (CalendarCell) view;
 				// Ask the cell to tell our listener they were clicked.
+				Log.d("CAL", "Fire Click.");
 				cell.fireCalendarClick(mListener);
 			}
 		}
@@ -178,6 +179,7 @@ public class CalendarView extends LinearLayout {
 		mMonthName = new TextView(getContext(), mAttributes);
 		mMonthName.setTextSize(MONTH_TEXT_SIZE);
 		mMonthName.setClickable(true);
+		mMonthName.setBackgroundResource(nl.vu.lifetag.R.drawable.selector);
 		mMonthName.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(final View v) {
@@ -189,6 +191,7 @@ public class CalendarView extends LinearLayout {
 		leftArrow.setText("  <");
 		leftArrow.setTextSize(MONTH_TEXT_SIZE);
 		leftArrow.setClickable(true);
+		leftArrow.setBackgroundResource(nl.vu.lifetag.R.drawable.selector);
 		leftArrow.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(final View v) {
@@ -200,6 +203,7 @@ public class CalendarView extends LinearLayout {
 		rightArrow.setText(">  ");
 		rightArrow.setTextSize(MONTH_TEXT_SIZE);
 		rightArrow.setClickable(true);
+		rightArrow.setBackgroundResource(nl.vu.lifetag.R.drawable.selector);
 		rightArrow.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(final View v) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="sense_app_name">Sense Platform</string>
-    <string name="sense_app_label">Sense</string>
+    <string name="sense_app_name">Life Tag</string>
+    <string name="sense_app_label">Life Tag</string>
 
     <!-- button labels -->
     <string name="button_faq">FAQ</string>
@@ -14,8 +14,8 @@
     <!-- miscellaneous text resources for dialogs -->
     <string name="dialog_dev_mode_title">Development mode</string>
     <string name="dialog_dev_mode_msg">Warning: enabling development mode is designed for Sense testers only. It is not recommended for normal use: your data will not be accessible anymore on CommonSense!</string>
-    <string name="dialog_faq_title">Sense FAQ</string>
-    <string name="dialog_faq_msg"><b>What is Sense?</b>\nSense is a company that gathers context information to improve your communication and coordination activities. We want to create a system that can classify and predict your activities based on sensor information from your phone. Only a system that knows what you are doing can help you to do it.\n\n<b>What is the Sense Platform app?</b>\nThis app gathers your sensor data and sends it to our online CommonSense system. Sense is still in full development, so for now the app does nothing for you but gather data.\n\n<b>What is CommonSense?</b>\nCommonSense is Sense\'s intelligent data storage where advanced pattern recognition and sensor fusion can be performed, so the system can learn to recognize what you are doing and how to help you. Like the Sense app, it is still under heavy development so its powers are still limited.\n\n<b>How do I get to see the gathered data?</b>\nYou can see what information we have gathered on CommonSense\'s web interface:http://common.sense-os.nl.\n\n<b>Are you spying on me?</b>\nNo. Sense is not gathering data for its own use, you are gathering data for your own use. Your data is only accessible to you and to anybody you <i>explicitly</i> shared information with.</string>
+    <string name="dialog_faq_title">LifeTag FAQ</string>
+<string name="dialog_faq_msg"><b>What is VU Univerity Amsterdam</b>\nVU University Amsterdam is a university located in Amsterdam, The Netherlands. We are conducting research on sensing using mobile phones. This app is a portion of that research.\n\n<b></b><b>What is Sense?</b>\nSense is a company that gathers context information to improve your communication and coordination activities.\n\n<b>What is the Life Tag app?</b>\nThis app allows you to \"Tag Your Life\" activities, and simultaneously gathers your sensor data and sends it to Sense\'s online CommonSense system. We want to create a system that can classify and predict your activities based on sensor information from your phone. Only a system that knows what you are doing can help you to do it. This app is designed to allow us to gather the information we need to achieve that goal. For now the app only gathers information, but using this data we hope that a future version will be able to \"Tag Your Life\" without your direct action.\n\n<b>What is CommonSense?</b>\nCommonSense is Sense\'s intelligent data storage, where advanced pattern recognition and sensor fusion can be performed, so the system can learn to recognize what you are doing and how to help you. It is still under heavy development so its powers are still limited, but we hope this app will change that in the near future.\n\n<b>How do I get to see the gathered data?</b>\nYou can see what information we have gathered on CommonSense\'s web interface:http://common.sense-os.nl. You can also see your Tags using the application.\n\n<b>Are you spying on me?</b>\nNo. We only use your gathered data to conduct research. Your data is only accessible to you and to researchers at Sense and the VU University Amsterdam, as well as those you <i>explicitly</i> shared information with. However, when we use your information for research we anonymize it and aggregate it with information from others. We do not share your information outside of Sense and the VU University Amsterdam. Furthermore, you are always welcome to use the CommonSense web interface to delete some or all of the data we have collected using this application.</string>
     <string name="dialog_login_title">Enter login details:</string>
     <string name="dialog_login_hint_username">Username</string>
     <string name="dialog_login_hint_pass">Password</string>
@@ -37,7 +37,7 @@
     <string name="dialog_update_title">Announcement</string>
     <string name="dialog_logout_msg">Are you sure you want to sign out this user from CommonSense?</string>
     <string name="dialog_logout_title">Sign out: \'%s\'</string>
-    <string name="dialog_welcome_title">Welcome to Sense</string>
+    <string name="dialog_welcome_title">Welcome to LifeTag</string>
     <string name="dialog_welcome_msg">The Sense platform gathers data about your activities and shares it with the CommonSense data storage.\n\nOver time, it will learn to recognize your behaviour and current status. This makes it possible for your phone to help you avoid repetitive or stupid tasks, and alert you about interesting events.\n\nPlease login, or register a free CommonSense account.</string>
 
     <!-- options menu labels -->
@@ -49,7 +49,7 @@
 
     <!-- preference labels -->
     <string name="pref_login_title">Sign in</string>
-    <string name="pref_login_summary">Enter account details</string>    
+    <string name="pref_login_summary">Enter account details</string>
     <string name="pref_logout_title">Sign out</string>
     <string name="pref_logout_summary">Logged in as \'%s\'</string>
 
@@ -68,9 +68,9 @@
     <string name="toast_toggle_external_sensors">External sensors will update every ?.</string>
     <string name="toast_toggle_ambience">Ambience measurements will update ?.</string>
     <string name="toast_toggle_phonestate">Changes in phone state will be shared with CommonSense.</string>
-    
-	<!-- actions for main sense service intents -->
-	<string name="action_sense_app">nl.vu.lifetag.SenseApp</string>
+
+    <!-- actions for main sense service intents -->
+    <string name="action_sense_app">nl.vu.lifetag.SenseApp</string>
     <string name="action_sense_service">nl.vu.lifetag.SenseService</string>
     <string name="action_sense_new_data">nl.vu.lifetag.MsgHandler.NEW_DATA</string>
     <string name="action_sense_send_data">nl.vu.lifetag.MsgHandler.SEND_DATA</string>

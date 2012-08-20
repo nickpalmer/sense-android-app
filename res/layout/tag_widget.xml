@@ -1,9 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linearLayout1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal" >
+    android:gravity="center"
+    android:clickable="true"
+    android:layout_margin="10sp"
+    android:background="@drawable/appwidget_bg_clickable">
 
     <ImageButton
         android:id="@+id/lifetag_button"
@@ -13,6 +16,7 @@
         android:scaleType="fitCenter"
         android:maxHeight="48dp"
         android:maxWidth="48dp"
+        android:clickable="true"
         android:src="@drawable/lifetag_unknown"
         android:contentDescription="@string/content_descr_item_image" />
 
@@ -21,6 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textSize="7pt"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:textColor="@android:color/black"
         android:text="@string/tag_lifetag_other" >
     </TextView>
 

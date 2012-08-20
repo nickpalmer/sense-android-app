@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -32,6 +33,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 public class BaseTagReceiver extends FragmentActivity {
 
@@ -270,7 +272,8 @@ public class BaseTagReceiver extends FragmentActivity {
 					Log.d(TAG, "Choice Dialog clicked");
 					TagId tag = mConfig.mDefaultTagId;
 					if (which < mConfig.mTags.length) {
-						tag = mConfig.mTags[which];
+						// Off by one because of the header text
+						tag = mConfig.mTags[which - 1];
 					}
 					putTag(tag);
 
@@ -300,12 +303,21 @@ public class BaseTagReceiver extends FragmentActivity {
 			} else {
 				builder = new AlertDialog.Builder(getActivity());
 			}
-
 			builder.setAdapter(listAdapter, getOnClickListener());
 			builder.setTitle(mConfig.mDialogTitle);
 
 			// builder.setCancelable(false);
 			AlertDialog dialog = builder.create();
+			TextView header = new TextView(getBaseContext());
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+				header.setTextColor(Color.WHITE);
+			} else {
+				header.setTextColor(Color.BLACK);
+			}
+			header.setTextSize(30);
+			header.setText(R.string.dialog_will_be);
+			header.setPadding(12, 3, 0, 3);
+			dialog.getListView().addHeaderView(header);
 
 			setCancelable(false);
 

@@ -1,6 +1,7 @@
 package nl.sense_os.app.tags;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -8,13 +9,14 @@ import nl.sense_os.app.TwoLineListActivity;
 import nl.sense_os.app.tags.Tags.TagInfo;
 import nl.vu.lifetag.R;
 import android.content.Intent;
+import android.text.format.DateFormat;
 import android.widget.TextView;
 
 /**
  * This activity shows a list of tags made by the user.
- * 
+ *
  * @author Nick Palmer &lt;nick@sluggardy.net&gt;
- * 
+ *
  */
 public class TagsActivity extends TwoLineListActivity {
 
@@ -39,7 +41,10 @@ public class TagsActivity extends TwoLineListActivity {
 
 		if (mYear > 0) {
 			TextView title = (TextView) findViewById(R.id.sense_banner);
-			title.append(": " + mYear + "-" + mMonth + "-" + mDay);
+			Calendar c = Calendar.getInstance();
+			c.set(mYear, mMonth, mDay);
+			title.setText(R.string.label_tags);
+			title.append(": " + DateFormat.getDateFormat(this).format(c.getTime()));
 		}
 
 		super.onStart();
