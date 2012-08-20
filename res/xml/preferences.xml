@@ -12,6 +12,12 @@
             android:summary="Register a new user"
             android:title="New user" />
 
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="tag_expired_notification"
+            android:summary="Causes a notification to be sent when your current tag expires"
+            android:title="Tag Expired Notification" />
+
         <ListPreference
             android:defaultValue="0"
             android:dialogTitle="Sample rate"

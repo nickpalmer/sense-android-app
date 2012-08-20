@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -217,6 +218,29 @@ public class BaseTagReceiver extends FragmentActivity {
 
 				@Override
 				public void onClick(DialogInterface arg0, int which) {
+					// Set a notification alarm.
+					SharedPreferences prefs = getActivity().getPreferences(MODE_WORLD_READABLE);
+					if (prefs.getBoolean("tag_expired_notification", true)) {
+						setNotificationAlarm(which);
+					}
+
+					TagId tag = TagDB.getLastTag(getActivity(), mConfig.mSensorName,
+							mConfig.mDefaultTagId);
+
+					List<BadgeInfo> badges = Badges.getEarnedBadges(getActivity(), tag);
+					if (badges == null) {
+						// Dismiss with a finish of the activity
+						TagTimeDialog.this.dismiss();
+					} else {
+						EarnedBadgesDialog badgeDialog = new EarnedBadgesDialog(badges);
+						badgeDialog.show(getSupportFragmentManager(), mConfig.mSensorName
+								+ "badges");
+						// Go straight to the top to dismiss without finishing.
+						TagTimeDialog.this.dismiss(false);
+					}
+				}
+
+				private void setNotificationAlarm(int which) {
 					AlarmManager manager = (AlarmManager) getActivity().getSystemService(
 							Context.ALARM_SERVICE);
 					int[] times = getActivity().getResources().getIntArray(R.array.time_values);
@@ -237,21 +261,6 @@ public class BaseTagReceiver extends FragmentActivity {
 
 					// And set a new alarm
 					manager.set(AlarmManager.RTC_WAKEUP, time, operation);
-
-					TagId tag = TagDB.getLastTag(getActivity(), mConfig.mSensorName,
-							mConfig.mDefaultTagId);
-
-					List<BadgeInfo> badges = Badges.getEarnedBadges(getActivity(), tag);
-					if (badges == null) {
-						// Dismiss with a finish of the activity
-						TagTimeDialog.this.dismiss();
-					} else {
-						EarnedBadgesDialog badgeDialog = new EarnedBadgesDialog(badges);
-						badgeDialog.show(getSupportFragmentManager(), mConfig.mSensorName
-								+ "badges");
-						// Go straight to the top to dismiss without finishing.
-						TagTimeDialog.this.dismiss(false);
-					}
 				}
 			};
 		}
