@@ -25,6 +25,7 @@ public class WelcomeDialog extends DialogFragment {
 	public static WelcomeDialog newInstance(WelcomeActivity listener) {
 		WelcomeDialog dialog = new WelcomeDialog();
 		dialog.setListener(listener);
+		dialog.setCancelable(false);
 		return dialog;
 	}
 
