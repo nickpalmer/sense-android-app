@@ -36,8 +36,8 @@ public final class LifeTagWidget {
 	public static final TagId unknown = new TagId(sSensorName, "unknown", 13);
 
 	/** The array of tags for this widget. */
-	public static final TagId[] sTags = { cooking, eating, sleeping, traveling, working, shopping,
-			watching, showering, reading, sporting, meeting, socializing, sex, unknown };
+	public static final TagId[] sTags = { working, meeting, traveling, eating, cooking,
+		watching, showering, sleeping, sporting, shopping, reading, socializing, sex, unknown };
 
 	/** The provider class for this widget. */
 	public static class Provider extends BaseTagProvider {
