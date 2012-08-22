@@ -5,13 +5,13 @@
     android:orientation="vertical"
     android:gravity="center"
     android:clickable="true"
-    android:layout_margin="10sp"
+    android:layout_margin="5sp"
     android:background="@drawable/appwidget_bg_clickable">
 
     <ImageButton
         android:id="@+id/lifetag_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="48sp"
+        android:layout_height="48sp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:maxHeight="48dp"
@@ -25,10 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="7pt"
-        android:textStyle="bold"
+        android:textAppearance="@android:attr/textAppearanceLarge"
         android:clickable="true"
-        android:textColor="@android:color/black"
         android:text="@string/tag_lifetag_other" >
     </TextView>
 
