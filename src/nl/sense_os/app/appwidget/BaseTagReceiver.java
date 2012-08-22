@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -131,7 +132,7 @@ public class BaseTagReceiver extends FragmentActivity {
 			// builder.setCancelable(false);
 			AlertDialog dialog = builder.create();
 
-			setCancelable(true);
+			setCancelable(false);
 
 			return dialog;
 		}
@@ -199,10 +200,14 @@ public class BaseTagReceiver extends FragmentActivity {
 
 			// builder.setCancelable(false);
 			AlertDialog dialog = builder.create();
-
-			setCancelable(false);
+			setCancelable(true);
 
 			return dialog;
+		}
+
+		@Override
+		public void onCancel(DialogInterface arg0) {
+			showTagChoiceDialog();
 		}
 
 		private ListAdapter getTimeListAdapter(FragmentActivity context) {
@@ -219,10 +224,7 @@ public class BaseTagReceiver extends FragmentActivity {
 				@Override
 				public void onClick(DialogInterface arg0, int which) {
 					// Set a notification alarm.
-					SharedPreferences prefs = getActivity().getPreferences(MODE_WORLD_READABLE);
-					if (prefs.getBoolean("tag_expired_notification", true)) {
-						setNotificationAlarm(which);
-					}
+					setNotificationAlarm(which);
 
 					TagId tag = TagDB.getLastTag(getActivity(), mConfig.mSensorName,
 							mConfig.mDefaultTagId);
@@ -248,6 +250,10 @@ public class BaseTagReceiver extends FragmentActivity {
 					// Build the pending intent
 					Intent intent = new Intent();
 					intent.putExtra(BaseTagProvider.EXTRA_ALARM, true);
+					final SharedPreferences prefs = PreferenceManager
+							.getDefaultSharedPreferences(BaseTagReceiver.this);
+					intent.putExtra(BaseTagProvider.EXTRA_NOTIFICATION,
+							prefs.getBoolean("tag_expired_notification", true));
 					intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
 					intent.setClassName(getActivity(), mConfig.mProvider.getName());
 					PendingIntent operation = PendingIntent.getBroadcast(getActivity(), 0, intent,

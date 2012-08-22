@@ -9,6 +9,7 @@ import nl.sense_os.app.tags.Tags;
 import nl.sense_os.app.tags.Tags.TagId;
 import nl.sense_os.app.tags.Tags.TagInfo;
 import nl.vu.lifetag.R;
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -33,10 +34,13 @@ public class BaseTagProvider extends AppWidgetProvider {
 	/** Flag in the intent extras indicating this is an update due to an alarm going off. */
 	public static final String EXTRA_ALARM = "alarmUpdate";
 
+	public static final String EXTRA_NOTIFICATION = "setNotification";
+
 	/** The configuration for the widget this provider is working for. */
 	private final TagWidgetConfiguration mConfig;
 
 	/** The map of tags for this provider. */
+	@SuppressLint("UseSparseArrays")
 	private final Map<Integer, TagId> mTags = new HashMap<Integer, TagId>();
 
 	/**
@@ -78,21 +82,26 @@ public class BaseTagProvider extends AppWidgetProvider {
 						mConfig.mDisplayName);
 				long when = System.currentTimeMillis();
 
-				Notification notification = new Notification(icon, tickerText, when);
-				notification.flags = Notification.FLAG_AUTO_CANCEL;
-				notification.defaults = Notification.DEFAULT_VIBRATE;
+				// If requested notify about this change.
+				if (intent.hasExtra(EXTRA_NOTIFICATION) &&
+						intent.getBooleanExtra(EXTRA_NOTIFICATION, true)) {
 
-				// Build a pending intent for when the user clicks.
-				Intent newIntent = new Intent();
-				newIntent.setClassName(context, mConfig.mReceiver.getName());
+					Notification notification = new Notification(icon, tickerText, when);
+					notification.flags = Notification.FLAG_AUTO_CANCEL;
+					notification.defaults = Notification.DEFAULT_VIBRATE;
 
-				PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, newIntent, 0);
+					// Build a pending intent for when the user clicks.
+					Intent newIntent = new Intent();
+					newIntent.setClassName(context, mConfig.mReceiver.getName());
 
-				notification.setLatestEventInfo(context, contentTitle, tickerText, pendingIntent);
+					PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, newIntent, 0);
 
-				NotificationManager nm = (NotificationManager) context
-						.getSystemService(Context.NOTIFICATION_SERVICE);
-				nm.notify(mConfig.mSensorName.hashCode(), notification);
+					notification.setLatestEventInfo(context, contentTitle, tickerText, pendingIntent);
+
+					NotificationManager nm = (NotificationManager) context
+							.getSystemService(Context.NOTIFICATION_SERVICE);
+					nm.notify(mConfig.mSensorName.hashCode(), notification);
+				}
 
 				BaseTagProvider.forceUpdate(context, mConfig.mProvider.getName());
 			}
