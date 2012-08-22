@@ -28,6 +28,11 @@ public class LoginDialog extends DialogFragment {
 		 *            Value of the password field (can be null)
 		 */
 		void onSubmit(String username, String password);
+
+		/**
+		 * Called when the user presses the register button
+		 */
+		void startRegister();
 	}
 
 	public static LoginDialog newInstance(ILoginActivity listener) {
@@ -62,6 +67,13 @@ public class LoginDialog extends DialogFragment {
 				String password = passField.getText() == null ? null : passField.getText()
 						.toString();
 				listener.onSubmit(username, password);
+			}
+		});
+		builder.setNeutralButton(R.string.button_reg, new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				listener.startRegister();
 			}
 		});
 		builder.setNegativeButton(android.R.string.cancel, new OnClickListener() {

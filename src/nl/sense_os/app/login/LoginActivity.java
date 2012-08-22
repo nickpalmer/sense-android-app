@@ -3,6 +3,7 @@ package nl.sense_os.app.login;
 import nl.sense_os.app.SenseSettings;
 import nl.sense_os.app.dialogs.WaitDialog;
 import nl.sense_os.app.login.LoginDialog.ILoginActivity;
+import nl.sense_os.app.register.RegisterActivity;
 import nl.sense_os.service.ISenseService;
 import nl.sense_os.service.ISenseServiceCallback;
 import nl.sense_os.service.commonsense.SenseApi;
@@ -223,5 +224,10 @@ public class LoginActivity extends FragmentActivity implements ILoginActivity {
 		}
 		service = null;
 		isServiceBound = false;
+	}
+
+	@Override
+	public void startRegister() {
+		startActivity(new Intent(this, RegisterActivity.class));
 	}
 }
