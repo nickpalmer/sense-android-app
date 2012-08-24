@@ -7,8 +7,8 @@
     <!-- Homescreen Labels -->
     <string name="label_tags">Tags</string>
     <string name="label_badges">Badges</string>
-    <string name="label_no_tags">No Tags Yet.\n\nPlease add a tag widget to your homescreen and press it to tag your life.</string>
-    <string name="label_no_badges">No Badges Yet.\n\nEarn badges by adding a tag widget to your homescreen and tagging your life.</string>
+    <string name="label_no_tags">No Tags Yet.\n\nPlease add a tag widget to your homescreen and press it to tag your life.\n\nYou can add a widget to your homescreen by either long pressing your homescreen, or by picking up and droppping a widget from the application drawer, depending on your version of Android, and the launcher application you are using.</string>
+    <string name="label_no_badges">No Badges Yet.\n\nEarn badges by adding a tag widget to your homescreen and tagging your life.\n\nYou can add a widget to your homescreen by either long pressing your homescreen, or by picking up and droppping a widget from the application drawer, depending on your version of Android, and the launcher application you are using.</string>
     <string name="label_lifetag">Life Tag</string>
     <string name="label_tag_calendar">Tag Calendar</string>
 
