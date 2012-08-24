@@ -157,7 +157,7 @@ public class BaseTagProvider extends AppWidgetProvider {
 
 			RemoteViews views = getUpdateViews(context);
 
-			views.setOnClickPendingIntent(R.id.lifetag_button, pendingIntent);
+			views.setOnClickPendingIntent(R.id.lifetag_button_layout, pendingIntent);
 
 			// Tell the AppWidgetManager to perform an update on widget
 			appWidgetManager.updateAppWidget(appWidgetId, views);
