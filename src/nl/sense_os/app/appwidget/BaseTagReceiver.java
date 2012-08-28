@@ -106,8 +106,32 @@ public class BaseTagReceiver extends FragmentActivity {
 		private List<BadgeInfo> badges;
 		private ListAdapter listAdapter;
 
+		// Required for fragment compat lib?
+		@SuppressWarnings("unused")
+		public EarnedBadgesDialog() {
+			super();
+		}
+
 		public EarnedBadgesDialog(List<BadgeInfo> badges) {
 			this.badges = badges;
+		}
+
+		@Override
+		public void onSaveInstanceState(Bundle state) {
+			BadgeInfo[] badgeArray = new  BadgeInfo[badges.size()];
+			badges.toArray(badgeArray);
+			state.putParcelableArray("badges", badgeArray);
+		}
+
+		@Override
+		public void onCreate(Bundle savedInstanceState) {
+			if (savedInstanceState.containsKey("badges")) {
+				BadgeInfo[] badgeArray = (BadgeInfo[]) savedInstanceState.getParcelableArray("badges");
+				badges = new ArrayList<BadgeInfo>();
+				for (BadgeInfo info : badgeArray) {
+					badges.add(info);
+				}
+			}
 		}
 
 		public void dismiss() {
@@ -194,6 +218,11 @@ public class BaseTagReceiver extends FragmentActivity {
 	private class TagTimeDialog extends DialogFragment {
 
 		private ListAdapter listAdapter;
+
+		// Required for Fragment compat lib?
+		public TagTimeDialog() {
+			super();
+		}
 
 		public void dismiss(boolean finish) {
 			Log.d(TAG, "Time Dismiss called.");
@@ -308,6 +337,11 @@ public class BaseTagReceiver extends FragmentActivity {
 	private class TagChoiceDialog extends DialogFragment {
 
 		private ListAdapter listAdapter;
+
+		// Required for Fragment compat lib?
+		public TagChoiceDialog() {
+			super();
+		}
 
 		private OnClickListener getOnClickListener() {
 			return new OnClickListener() {

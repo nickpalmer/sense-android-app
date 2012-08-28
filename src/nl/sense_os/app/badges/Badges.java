@@ -43,6 +43,8 @@ import nl.sense_os.app.appwidget.TagWidgetRegistry;
 import nl.sense_os.app.tags.Tags.TagId;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * This class handles the Badge reward system. It manages registration of available badges from the
@@ -74,7 +76,7 @@ public final class Badges {
 	 */
 	private static HashMap<BadgeId, BadgeInfo>sBadges = new HashMap<BadgeId,BadgeInfo>();
 
-	public static final class BadgeInfo {
+	public static final class BadgeInfo implements Parcelable {
 		/**
 		 *  The string resource for the name of this badge
 		 */
@@ -118,6 +120,35 @@ public final class Badges {
 				badgeMap.put("ts", timestamp);
 			}
 			return badgeMap;
+		}
+
+		@Override
+		public int describeContents() {
+			return 0;
+		}
+
+		@Override
+		public void writeToParcel(Parcel dest, int flags) {
+			dest.writeInt(name);
+			dest.writeInt(drawable);
+			dest.writeString(timestamp);
+		}
+
+		public static final Parcelable.Creator<BadgeInfo> CREATOR
+		= new Parcelable.Creator<BadgeInfo>() {
+			public BadgeInfo createFromParcel(Parcel in) {
+				return new BadgeInfo(in);
+			}
+
+			public BadgeInfo[] newArray(int size) {
+				return new BadgeInfo[size];
+			}
+		};
+
+		private BadgeInfo(Parcel in) {
+			name = in.readInt();
+			drawable = in.readInt();
+			timestamp = in.readString();
 		}
 
 	}
